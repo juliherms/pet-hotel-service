@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+
+  #banco de dados do postgres
+  postgres-database: 
+    container_name: postgres-database
+    image: postgres:12.3
+    volumes:
+      - "/var/lib/postgresql/data:/var/lib/postgresql/data" 
+    #Enviroment variable for DB name, user and password 
+    environment:
+      POSTGRES_USER: register
+      POSTGRES_PASSWORD: register
+      POSTGRES_DB: pet-hotel-db
+    ports:
+      - 5432:5432
+    networks:
+      - my-network
+
+networks: 
+  my-network:
+    driver: bridge
